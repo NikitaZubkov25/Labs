@@ -1,8 +1,5 @@
 #include "arrays.h"
 
-
-
-
 int main(){
     int size;
     input(&size, 2,100);
