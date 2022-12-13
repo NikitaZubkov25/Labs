@@ -12,4 +12,6 @@ int main(){
     char* string;
     input_string(&string);
     printf("%s", string);
+
+    free(string);
 }

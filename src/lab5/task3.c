@@ -2,7 +2,7 @@
 
 int main(){
     srand(time(NULL));
-    int cols, rows, greater;
+    int cols = 0, rows = 0, greater = 0;
     input(&greater, -100,100, "Input greater number: ");
     input(&rows, 1, 50, "Input rows: ");
     input(&cols, 1, 50, "Input columns: ");
@@ -15,7 +15,6 @@ int main(){
 
     deleteGreaterElements(length, arr, rows, greater);
     deleteBlankRows(arr,&rows,length);
-    endWithZero(arr,rows,length);
     printMatrixWithLength(length, arr, &rows);
 
     clearRows(arr, rows);

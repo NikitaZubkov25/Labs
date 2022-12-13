@@ -15,12 +15,12 @@ int stringLength(const char* str, int start){
 
 char* printFrom(const char* str, int start){
     char* resultStr = calloc(1,sizeof(char));
-    int i = 0;
+    int i = 1;
     while(str[start] != ' ' && str[start] != '\0'){
+        resultStr = realloc(resultStr, sizeof(char) * i);
         resultStr[i] = str[start];
         i++;
         start++;
-        resultStr = realloc(resultStr, sizeof(char) * i);
     }
 
     return resultStr;
@@ -29,7 +29,7 @@ char* printFrom(const char* str, int start){
 void findLongestWord(char *str) {
     int i = 0;
     int lengthLongest = 0;
-    int startOfWord;
+    int startOfWord = 0;
     while(str[i] != '\0'){
         if(str[i] == ' '){
             i++;

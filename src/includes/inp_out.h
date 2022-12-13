@@ -26,6 +26,7 @@ void input_string(char **str) {
         (*str)[size - 1] = c;
         size++;
     }
+    (*str) = realloc(*str, size * sizeof(char));
     (*str)[size - 1] = '\0';
 
 };

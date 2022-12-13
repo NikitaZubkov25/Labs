@@ -14,20 +14,19 @@ int input(int* variable, int from, int to) {
     return *variable;
 }
 
-void outputMatr(int matr[50][50], int row, int col) {
-    printf("\n");
-    for (int i = 0; i < row; i++) {
+void printMatrix(int **arr, int rows, int cols) {
+    printf("[ \n");
+    for (int i = 0; i < rows; i++) {
         printf("\t[");
-        for (int j = 0; j < col; j++) {
-            if (j == col - 1) {
-                printf("%d", matr[i][j]);
-            }
-            else{
-                printf("%d,\t", matr[i][j]);
-            }
+        for (int j = 0; j < cols; j++) {
+            if (j == cols - 1)
+                printf("%d", arr[i][j]);
+            else
+                printf("%d,\t", arr[i][j]);
         }
-        printf("]\n\n");
+        printf("],\n\n");
     }
+    printf("]\n\n");
 }
 
 int countOfRowsWithZero(int matr[50][50], int row, int col) {
@@ -67,8 +66,8 @@ int highestMatchingStreakColumn(int matr[50][50], int row, int col) {
 int main() {
     srand(time(NULL));
     int arr[50][50];
-    int cols, rows;
-    int choice;
+    int cols = 0, rows = 0;
+    int choice = 0;
     printf("Input count of rows: ");
     input(&rows, 1, 50);
     printf("Input count of columns: ");
@@ -92,7 +91,7 @@ int main() {
             }
         }
     }
-    outputMatr(arr, rows, cols);
+    printMatrix(arr, rows, cols);
     printf("count of the rows with zero - %d \n", countOfRowsWithZero(arr,rows,cols));
     printf("The column index of highest streak matching nums is - %d \n", highestMatchingStreakColumn(arr, rows, cols));
     return 0;

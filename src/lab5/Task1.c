@@ -1,7 +1,7 @@
 #include "arrays.h"
 
 int main(){
-    int size, choice;
+    int size = 1, choice = 0;
     input(&size, 2,100, "Input size of array: ");
     input(&choice, 1, 2, "If you want to generate random number - 1, else - 2: ");
 

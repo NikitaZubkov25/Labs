@@ -14,20 +14,19 @@ int input(int* variable, int from, int to) {
     return *variable;
 }
 
-void outputMatr(int matr[50][50], int row, int col) {
-    printf("\n");
-    for (int i = 0; i < row; i++) {
+void printMatrix(int **arr, int rows, int cols) {
+    printf("[ \n");
+    for (int i = 0; i < rows; i++) {
         printf("\t[");
-        for (int j = 0; j < col; j++) {
-            if (j == col - 1) {
-                printf("%d", matr[i][j]);
-            }
-            else {
-                printf("%d,\t", matr[i][j]);
-            }
+        for (int j = 0; j < cols; j++) {
+            if (j == cols - 1)
+                printf("%d", arr[i][j]);
+            else
+                printf("%d,\t", arr[i][j]);
         }
-        printf("]\n\n");
+        printf("],\n\n");
     }
+    printf("]\n\n");
 }
 
 int findFirstPositiveCol(int arr[50][50], int col, int row) {
@@ -46,7 +45,7 @@ int findFirstPositiveCol(int arr[50][50], int col, int row) {
     return ind;
 }
 
-int switchPreviousColumnSignToOpposite(int arr[50][50], int row, int indOfColumn) {
+void switchPreviousColumnSignToOpposite(int arr[50][50], int row, int indOfColumn) {
     if (indOfColumn > 0) {
         for (int i = 0; i < row; i++) {
             arr[i][indOfColumn - 1] = -arr[i][indOfColumn - 1];

@@ -8,7 +8,7 @@
 
 int main(){
     srand(time(NULL));
-    int rows, cols;
+    int rows = 0, cols = 0;
     input(&rows, 1,50,"Input rows: ");
     input(&cols, 1, 50, "Input columns: ");
 

@@ -49,7 +49,7 @@ void removeElements(int *arr, int *size) {
     for (int i = (*size) - 1; i >= 0; i--) {
         if (isSimple(arr[i])) {
             printf("%d - is simple\n", arr[i]);
-            for (int j = i; j < *size; j++) {
+            for (int j = i; j < *size - 1; j++) {
                 arr[j] = arr[j + 1];
             }
             (*size)--;
@@ -175,7 +175,7 @@ void clearRows(int **arr, int rows) {
 }
 
 void deleteElementInRow(int *length, int **arr, int size, int row, int element) {
-    for (int i = element; i < size; i++) {
+    for (int i = element; i < size - 1; i++) {
         arr[row][i] = arr[row][i + 1];
     }
 }
@@ -217,7 +217,7 @@ void deleteGreaterElements(int *length, int **arr, int rows, int greater) {
 void deleteBlankRows(int **arr, int *rows, int *length) {
    for(int i = (*rows) - 1; i >= 0; i--){
        if(length[i] == 0){
-           for(int j = i; j < (*rows);j++){
+           for(int j = i; j < (*rows) - 1;j++){
                arr[j] = arr[j + 1];
            }
            (*rows)--;
@@ -230,13 +230,6 @@ void deleteBlankRows(int **arr, int *rows, int *length) {
    }
 }
 
-void endWithZero(int** arr,int rows, int* length){
-    for(int i = 0; i < rows; i++){
-        length[i]++;
-        realloc(*arr, length[i] * sizeof(int));
-        arr[i][length[i] - 1] == 0;
-    }
-}
 
 
 void swap(int *arr, int first, int second) {
