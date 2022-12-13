@@ -14,7 +14,7 @@ int input(int* variable, int from, int to) {
     return *variable;
 }
 
-void printMatrix(int **arr, int rows, int cols) {
+void printMatrix(int arr[50][50], int rows, int cols) {
     printf("[ \n");
     for (int i = 0; i < rows; i++) {
         printf("\t[");
@@ -82,11 +82,11 @@ int main() {
         }
     }
 
-    outputMatr(arr, rows, cols);
+    printMatrix(arr, rows, cols);
     int index = findFirstPositiveCol(arr, cols, rows);
     switchPreviousColumnSignToOpposite(arr, rows,index);
     printf("%d\n", index );
     printf("RESULT : \n");
-    outputMatr(arr, rows, cols);
+    printMatrix(arr, rows, cols);
     return 0;
 }
