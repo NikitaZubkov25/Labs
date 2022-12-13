@@ -14,7 +14,7 @@ int input(int* variable, int from, int to) {
     return *variable;
 }
 
-void output_matr(int matr[50][50], int row, int col) {
+void outputMatr(int matr[50][50], int row, int col) {
     printf("\n");
     for (int i = 0; i < row; i++) {
         printf("\t[");
@@ -31,9 +31,21 @@ void output_matr(int matr[50][50], int row, int col) {
 }
 
 int findHighestNumInMatrix(int matr[50][50], int rows, int cols) {
+    if(rows % 2 == 1){
+        rows = rows/2 + 1;
+    }
+    if(rows % 2 == 0){
+        rows = rows/2;
+    }
+    if(cols % 2 == 1){
+        cols = cols/2 + 1;
+    }
+    if(cols % 2 == 0){
+        cols = cols/2;
+    }
     int highestNum = matr[0][0];
-    for (int i = 0; i < rows / 2; i++) {
-        for (int j = 0; j < cols / 2; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
             if(matr[i][j] > highestNum){
                 highestNum = matr[i][j];
             }
@@ -42,13 +54,26 @@ int findHighestNumInMatrix(int matr[50][50], int rows, int cols) {
     return highestNum;
 }
 
-int print_1zone(int matr[50][50], int rows, int cols){
+int printFirstZone(int matr[50][50], int rows, int cols){
 
     printf("\n");
-    for (int i = 0; i < rows/2; i++) {
+    if(rows % 2 == 1){
+        rows = rows/2 + 1;
+    }
+    if(rows % 2 == 0){
+        rows = rows/2;
+    }
+    if(cols % 2 == 1){
+        cols = cols/2 + 1;
+    }
+    if(cols % 2 == 0){
+        cols = cols/2;
+    }
+
+    for (int i = 0; i < rows; i++) {
         printf("\t[");
-        for (int j = 0; j < cols/2; j++) {
-            if (j == cols/2 - 1) {
+        for (int j = 0; j < cols; j++) {
+            if (j == cols - 1) {
                 printf("%d", matr[i][j]);
             }
             else {
@@ -87,10 +112,10 @@ int main() {
             }
         }
     }
-    output_matr(arr, rows, cols);
+    outputMatr(arr, rows, cols);
     printf("highest num in 1st zone is - %d\n", findHighestNumInMatrix(arr, rows, cols));
     printf("1st zone: \n");
-    print_1zone(arr, rows, cols);
+    printFirstZone(arr, rows, cols);
 
     return 0;
 }

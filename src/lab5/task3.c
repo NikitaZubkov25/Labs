@@ -2,19 +2,23 @@
 
 int main(){
     srand(time(NULL));
-    int rows = 2;
-    int cols = 2;
+    int cols, rows, greater;
+    input(&greater, -100,100, "Input greater number: ");
+    input(&rows, 1, 50, "Input rows: ");
+    input(&cols, 1, 50, "Input columns: ");
+    int** arr = memoryAllocation(rows, cols);
     int* length = malloc(sizeof(int) * cols );
-    for(int i = 0; i < rows; i++){
-        length[i] = cols;
-    }
-    int** arr = memory_allocation(rows,cols);
-    fill_rand_matrix(arr,rows,cols,100);
-    print_matrix(arr,rows,cols);
-    print_array(length,cols);
+    fillLength(length, rows, cols);
 
-    delete_greater_elements(length,arr,rows,3);
-    print_matrix_with_length(length,arr,rows);
-    print_array(length,cols);
+    choiceInput(arr, rows, cols, 100);
+    printMatrix(arr, rows, cols);
+
+    deleteGreaterElements(length, arr, rows, greater);
+    deleteBlankRows(arr,&rows,length);
+    endWithZero(arr,rows,length);
+    printMatrixWithLength(length, arr, &rows);
+
+    clearRows(arr, rows);
+    free(arr);
 
 }

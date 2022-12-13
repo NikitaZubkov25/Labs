@@ -38,4 +38,46 @@ void SelectionSort(int* arr, int size){
     }
 }
 
+int compare(const void* x1, const void* x2)
+{
+    return (*(int*)x2 - *(int*)x1);
+}
+
+void calculateSort(int* arr, int size, char* sortName, int sort){
+    clock_t start = clock();
+    if(sort == 1){
+        HoareMethod(arr,0,size - 1);
+    } else{
+        SelectionSort(arr,size);
+    }
+
+    printf("%s time is - %1.30lf\n", sortName, (double) (clock() - start)/CLOCKS_PER_SEC );
+}
+
+void sortMatrix(int** arr, int cols, int rows, int k){
+    for (int i = 0; i < rows; i++) {
+        if ((i+1) % k == 0) {
+            printf("row - %d\n", i+1);
+            int sum1 = 0;
+            int sum2 = 0;
+            for (int j = 0; j < cols; j++) {
+                if (i + k < rows) {
+                    if (arr[i][j] > 0) {
+                        sum1 += arr[i][j];
+                    }
+                    if (arr[i + k][j] > 0) {
+                        sum2 += arr[i + k][j];
+                    }
+
+                }
+            }
+            if (sum1 < sum2) {
+                int *temp = arr[i];
+                arr[i] = arr[i + k];
+                arr[i + k] = temp;
+            }
+        }
+
+    }
+}
 #endif //LAB5_SORTS_H

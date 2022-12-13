@@ -14,7 +14,7 @@ int input(int* variable, int from, int to) {
     return *variable;
 }
 
-void output_matr(int matr[50][50], int row, int col) {
+void outputMatr(int matr[50][50], int row, int col) {
     printf("\n");
     for (int i = 0; i < row; i++) {
         printf("\t[");
@@ -92,7 +92,7 @@ int main() {
             }
         }
     }
-    output_matr(arr, rows, cols);
+    outputMatr(arr, rows, cols);
     printf("count of the rows with zero - %d \n", countOfRowsWithZero(arr,rows,cols));
     printf("The column index of highest streak matching nums is - %d \n", highestMatchingStreakColumn(arr, rows, cols));
     return 0;

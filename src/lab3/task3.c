@@ -2,10 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-int compare(const void* x1, const void* x2)
-{
-    return (*(int*)x2 - *(int*)x1);
-}
+
 
 int outputArray(int arr[], int size) {
     printf("[");
