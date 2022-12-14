@@ -2,10 +2,13 @@
 // Created by movie on 11/26/2022.
 //
 
-#ifndef LAB5_SORTS_H
-#define LAB5_SORTS_H
+#ifndef LAB5_SORTS_C
+#define LAB5_SORTS_C
 
 #include "arrays.h"
+#include "sorts.h"
+#include "stdio.h"
+#include "time.h"
 
 void HoareMethod(int* arr,int first,int last){
     int i, j, pivot;
@@ -80,4 +83,4 @@ void sortMatrix(int** arr, int cols, int rows, int k){
 
     }
 }
-#endif //LAB5_SORTS_H
+#endif //LAB5_SORTS_C

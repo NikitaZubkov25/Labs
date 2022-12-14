@@ -1,4 +1,4 @@
-#include "arrays.h"
+#include "arrays.c"
 
 int main(){
     srand(time(NULL));

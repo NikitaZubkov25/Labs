@@ -2,7 +2,7 @@
 // Created by movie on 11/23/2022.
 //
 
-#include "arrays.h"
+#include "arrays.c"
 
 
 

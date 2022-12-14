@@ -1,4 +1,4 @@
-#include "arrays.h"
+#include "arrays.c"
 
 int main(){
     int size = 1, choice = 0;

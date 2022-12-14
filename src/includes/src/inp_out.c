@@ -2,11 +2,12 @@
 // Created by movie on 11/23/2022.
 //
 
-#ifndef LAB5_INP_OUT_H
-#define LAB5_INP_OUT_H
+#ifndef LAB5_INP_OUT_C
+#define LAB5_INP_OUT_C
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "inp_out.h"
 
 void input(int *var, int min, int max, char *string) {
     printf("%s", string);
@@ -32,4 +33,4 @@ void input_string(char **str) {
 };
 
 
-#endif //LAB5_INP_OUT_H
+#endif //LAB5_INP_OUT_C

@@ -3,7 +3,9 @@ project(lab5 C)
 
 set(CMAKE_C_STANDARD 17)
 
-include_directories(src/includes)
+add_subdirectory(src/includes includes)
+link_libraries(includes)
+
 add_executable(lab4.1 src/lab4/task1.c)
 add_executable(lab4.2 src/lab4/task2.c)
 add_executable(lab4.3 src/lab4/task3.c)

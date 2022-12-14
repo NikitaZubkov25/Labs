@@ -2,13 +2,14 @@
 // Created by movie on 11/21/2022.
 //
 
-#ifndef LAB5_ARRAYS_H
-#define LAB5_ARRAYS_H
+#ifndef LAB5_ARRAYS_C
+#define LAB5_ARRAYS_C
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <inp_out.h>
+#include "arrays.h"
+#include "inp_out.h"
 
 
 void fillArray(int *arr, int size) {
@@ -180,7 +181,7 @@ void deleteElementInRow(int *length, int **arr, int size, int row, int element) 
     }
 }
 
-void printMatrixWithLength(const int *length, int **arr, int *rows) {
+void printMatrixWithLength(const int *length, int **arr, const int *rows) {
     printf("[ \n");
     for (int i = 0; i < (*rows); i++) {
         printf("\t[");
@@ -240,4 +241,4 @@ void swap(int *arr, int first, int second) {
 }
 
 
-#endif //LAB5_ARRAYS_H
+#endif //LAB5_ARRAYS_C
