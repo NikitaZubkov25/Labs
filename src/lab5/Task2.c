@@ -1,8 +1,8 @@
-//
-// Created by movie on 11/23/2022.
-//
-
-#include "arrays.c"
+#include "stdio.h"
+#include "arrays.h"
+#include "stdlib.h"
+#include "time.h"
+#include "inp_out.h"
 
 
 

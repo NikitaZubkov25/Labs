@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "lab-lib.h"
+#include "inp_out.h"
+#include "arrays.h"
+#include "sorts.h"
 
 
 int main() {

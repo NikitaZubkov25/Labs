@@ -21,7 +21,11 @@ void fillRandMatrix(int **arr, int rows, int cols, int max);
 
 void fillLength(int *length, int rows, int cols);
 
+void fillMatrixWithZero(int** arr, int rows, int* length);
+
 void choiceInput(int **arr, int rows, int cols, int max);
+
+void inputWithZero(int** arr, int* length, int rows);
 
 void printMatrix(int **arr, int rows, int cols);
 
@@ -37,7 +41,7 @@ void deleteElementInRow(int *length, int **arr, int size, int row, int element);
 
 void printMatrixWithLength(const int *length, int **arr, const int *rows);
 
-void deleteGreaterElements(int *length, int **arr, int rows, int greater);
+void deleteGreaterElem(int** arr,int rows, int* length, int greater);
 
 void deleteBlankRows(int **arr, int *rows, int *length);
 

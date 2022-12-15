@@ -103,6 +103,22 @@ void fillLength(int *length, int rows, int cols) {
     }
 }
 
+void fillMatrixWithZero(int** arr, int rows, int* length){
+    for(int i = 0; i < rows; i++){
+        int j = 0;
+        while(1){
+            arr[i] = (int*) realloc(arr[i], (j+1) * sizeof(int));
+            printf("Input element arr[%d][%d]:" , i, j);
+            input(&arr[i][j], -100, 100,"");
+            if(arr[i][j] == 0){
+                length[i] = j;
+                break;
+            }
+            j++;
+        }
+    }
+}
+
 void choiceInput(int **arr, int rows, int cols, int max) {
     int choice;
     input(&choice, 1, 2, "if you want random number - 1, else - 2:  ");
@@ -110,6 +126,24 @@ void choiceInput(int **arr, int rows, int cols, int max) {
         fillRandMatrix(arr, rows, cols, max);
     } else if (choice == 2) {
         fillMatrix(arr, rows, cols);
+    }
+}
+
+void inputWithZero(int** arr, int* length, int rows){
+    for (int i = 0; i < rows; i++) {
+        int j = 0;
+        length[i] = 0;
+        while (1) {
+            arr[i] = realloc(arr[i], sizeof(int) * (j + 1));
+            printf("input arr[%d][%d]", i, j);
+            input(&arr[i][j], -100, 100, "");
+            if (arr[i][j] == 0) {
+                arr[i] = realloc(arr[i], sizeof(int) * j);
+                break;
+            }
+            length[i]++;
+            j++;
+        }
     }
 }
 
@@ -196,22 +230,23 @@ void printMatrixWithLength(const int *length, int **arr, const int *rows) {
     printf("]\n\n");
 }
 
-void deleteGreaterElements(int *length, int **arr, int rows, int greater) {
-    int count;
-    for (int i = 0; i < rows; i++) {
-        count = 0;
-        for (int j = 0; j < length[i]; j++) {
-            if (arr[i][j] == 0) {
+void deleteGreaterElem(int** arr,int rows, int* length, int greater){
+    for(int i = 0; i < rows; i++){
+        if(length[i] == 0){
+            continue;
+        }
+        for(int j = length[i] - 1; j >= 0; j--){
+            if(length[i] == 0){
                 break;
             }
-            if (arr[i][j] > greater) {
-                count++;
-                deleteElementInRow(length, arr, length[i], i, j);
-                j--;
+            if(arr[i][j] > greater){
+                for(int k = j; k < length[i] - 1; k++){
+                    arr[i][j] = arr[i][j+1];
+                }
+                length[i]--;
             }
         }
-        length[i] -= count;
-        realloc(arr[i], sizeof(int) * length[i]);
+        arr[i] = realloc(arr[i], sizeof(int) * length[i]);
     }
 }
 

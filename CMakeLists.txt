@@ -16,3 +16,4 @@ add_executable(lab6.1 src/lab6/Task1.c)
 add_executable(lab6.2 src/lab6/task2.c)
 add_executable(lab7.1 src/lab7/task1.c)
 
+add_executable(test test.c)

@@ -1,4 +1,6 @@
-#include "arrays.c"
+#include "arrays.h"
+#include "stdlib.h"
+#include "inp_out.h"
 
 int main(){
     int size = 1, choice = 0;

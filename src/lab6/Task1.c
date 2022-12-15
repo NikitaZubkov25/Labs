@@ -1,4 +1,7 @@
-#include "sorts.c"
+#include <stdlib.h>
+#include "inp_out.h"
+#include "arrays.h"
+#include "sorts.h"
 
 
 int main(){
