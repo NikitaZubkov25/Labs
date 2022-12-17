@@ -111,4 +111,80 @@ void deleteWord(char *str, int start) {
 
 }
 
+int findLengthOfLowest(char* str){
+    int lengthOfShortest = 0;
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == ' ') {
+            i++;
+            continue;
+        }
+        if(lengthOfShortest == 0){
+            lengthOfShortest = stringLength(str,i,1);
+            i += stringLength(str,i,1);
+            continue;
+        }
+        if (stringLength(str, i, 1) < lengthOfShortest) {
+            lengthOfShortest = stringLength(str, i, 1);
+        }
+        i += stringLength(str, i, 1);
+    }
+    return lengthOfShortest;
+
+}
+
+void swapForString(char **arr, int first, int second) {
+    char* tmp;
+    tmp = arr[first];
+    arr[first] = arr[second];
+    arr[second] = tmp;
+}
+
+void HoareMethodForStrings(char** arr,int first,int last){
+    int i, j, pivot;
+    if(first<last){
+        pivot=first;
+        i=first;
+        j=last;
+        while(i<j){
+            while(findLengthOfLowest(arr[i])<=findLengthOfLowest(arr[pivot])&&i<last)
+                i++;
+            while(findLengthOfLowest(arr[j])> findLengthOfLowest(arr[pivot]))
+                j--;
+            if(i<j){
+                swapForString(arr,i,j);
+            }
+        }
+        swapForString(arr,pivot,j);
+        HoareMethodForStrings(arr,first,j-1);
+        HoareMethodForStrings(arr,j+1,last);
+    }
+}
+
+char** allocateStringArray(int argc, char** argv){
+    char** arr = calloc((argc), sizeof(char*));
+    for(int i = 0; i < argc; i++){
+        arr[i] = calloc(stringLength(argv[i], 0, 2),sizeof(char));
+        for(int j = 0; j < stringLength(argv[i], 0, 2); j++){
+            arr[i][j] = argv[i][j];
+            if(j == stringLength(argv[i], 0, 2) - 1){
+                arr[i][j+1] = '\0';
+            }
+        }
+    }
+    return arr;
+}
+
+void printStringArray(int argc, char** arr){
+    for(int i = 1; i < argc; i++){
+        int strLen = stringLength(arr[i], 0, 2);
+        printf("%s", arr[i]);
+        for(int j = strLen; j < 25; j++){
+            printf(" ");
+        }
+        printf("length of shortest word is %d\n", findLengthOfLowest(arr[i]));
+    }
+}
+
+
 #endif //LAB5_STRINGS_H
