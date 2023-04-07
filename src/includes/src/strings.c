@@ -9,7 +9,7 @@
 int stringLength(const char *str, int start, int flag) {
     int length = 0;
     if (flag == 1) {
-        while (str[start] != ' ' && str[start] != '\0') {
+        while (str[start] != ' ' && str[start] != '\0' && str[start] != '\t') {
             start++;
             length++;
         }
@@ -26,7 +26,7 @@ int stringLength(const char *str, int start, int flag) {
 char *printFrom(const char *str, int start) {
     char *resultStr = calloc(1, sizeof(char));
     int i = 1;
-    while (str[start] != ' ' && str[start] != '\0') {
+    while (str[start] != ' ' && str[start] != '\0' && str[start] !='\t') {
         resultStr = realloc(resultStr, sizeof(char) * i);
         resultStr[i - 1] = str[start];
         i++;
@@ -41,7 +41,7 @@ void findLongestWord(const char *str) {
     int lengthLongest = 0;
     int startOfWord = 0;
     while (str[i] != '\0') {
-        if (str[i] == ' ') {
+        if (str[i] == ' ' || str[i] == '\t') {
             i++;
             continue;
         }
@@ -58,7 +58,10 @@ void findLongestWord(const char *str) {
 
 int strCompare(const char *str, const char *str2, int startFrom) {
     int i = 0;
-    while (str2[i] != ' ' && str2[i] != '\0') {
+    while(str2[i] == ' ' || str2[i] == '\0' || str2[i] == '\t'){
+        i++;
+    }
+    while (str2[i] != ' ' && str2[i] != '\0' && str2[i] != '\t') {
         if (str[startFrom] == str2[i]) {
             i++;
             startFrom++;
@@ -72,7 +75,7 @@ int strCompare(const char *str, const char *str2, int startFrom) {
 int findSimilarWord(const char *str, const char *str2) {
     int i = 0;
     while (str[i] != '\0') {
-        if (str[i] == ' ' || str[i] == '\0') {
+        if (str[i] == ' ' || str[i] == '\0' || str[i] == '\t') {
             i++;
             continue;
         }
@@ -87,7 +90,7 @@ int findSimilarWord(const char *str, const char *str2) {
 
 void deleteWord(char *str, int start) {
     int newLength = stringLength(str, 0, 2) - stringLength(str, start, 1) + 1;
-    while (str[start] != ' ' && str[start] != '\0') {
+    while (str[start] != ' ' && str[start] != '\0' && str[start] !='\t') {
         int i = start;
         while (str[i + 1] != '\0') {
             str[i] = str[i + 1];
@@ -115,7 +118,7 @@ int findLengthOfLowest(char* str){
     int lengthOfShortest = 0;
     int i = 0;
     while (str[i] != '\0') {
-        if (str[i] == ' ') {
+        if (str[i] == ' ' || str[i] == '\t') {
             i++;
             continue;
         }
